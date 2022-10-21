@@ -1,6 +1,7 @@
 import pygame, sys, random
 from pygame.locals import *
 
+
 #declarations
 BWIDTH = BHEIGHT = 4  # number of columns n rows in the board, will have to change in case of diff types of boards
 TSIZE = 80 # tile size
@@ -88,16 +89,22 @@ def main():
 
         if mainBoard == SOLVEDBOARD:
 
-            msg = 'Solved!'
+            import congratulation
+
+            congratulation.main_menu1()    
 
 
+ 
 
             drawBoard(mainBoard, msg)
 
+            
 
 
-            checkForQuit()
- 
+            # checkForQuit()
+
+            
+
         #actions n outcomes sync
         for event in pygame.event.get(): # event handling loop
 
