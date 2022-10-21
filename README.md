@@ -1,6 +1,10 @@
 # Slide
 The popular and nostalgic; slide the number into order, puzzle implementation using python on pygame module, which I made as my 1st sem project.
 
+## addition to readme
+Rules:
+Slide the numbers around until they are in numerical order from least to greatest, left to right and top to bottom. The white space is the open space that the numbered squares are moved to. To move a number, click on it. Only numbers that are immediately to the left, right, above or below the empty space can be moved.
+
 
 ## Get Started
 Wanna try out Slide?
