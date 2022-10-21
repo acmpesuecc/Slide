@@ -2,6 +2,12 @@ import pygame
 import sys
 import random
 from pygame.locals import *
+from pygame import mixer
+
+pygame.init()
+
+mixer.music.load("background.wav")
+mixer.music.play()
 
 # declarations
 # number of columns n rows in the board, will have to change in case of diff types of boards
@@ -61,7 +67,7 @@ clock = pygame.time.Clock()
 def main():
 
     global CLOCK, surfdisplay, BASICFONT
-    global SURF_RESET, RECT_RESET, SURF_NEW, RECT_NEW, SURF_SOLVE, RECT_SOLVE, RECT_QUIT, SURF_QUIT
+    global SURF_RESET, RECT_RESET, SURF_NEW, RECT_NEW, SURF_SOLVE, RECT_SOLVE
     global BWIDTH, BHEIGHT
 
     pygame.init()
@@ -78,8 +84,6 @@ def main():
         'Reset', TC, TILECOLOR, WWIDTH - 120, WHEIGHT - 120)
     SURF_NEW, RECT_NEW = makeText(
         'New Game', TC, TILECOLOR, WWIDTH - 120, WHEIGHT - 90)
-    SURF_QUIT, RECT_QUIT = makeText(
-        'End Game', TC, TILECOLOR, WWIDTH - 120, WHEIGHT - 30)
     SURF_SOLVE, RECT_SOLVE = makeText(
         'Solve', TC, TILECOLOR, WWIDTH - 120, WHEIGHT - 60)
 
@@ -135,8 +139,6 @@ def main():
                         allMoves = []
 
                     # clicked on the End Game button
-                    elif RECT_QUIT.collidepoint(event.pos):
-                        terminate()
                 else:    # check if the clicked tile was next to the blank spot
 
                     blankx, blanky = getBlankPosition(mainBoard)
@@ -379,7 +381,6 @@ def drawBoard(board, message, x):  # current board creation
     surfdisplay.fill(BGCOLOR)
     surfdisplay.blit(SURF_RESET, RECT_RESET)
     surfdisplay.blit(SURF_NEW, RECT_NEW)
-    surfdisplay.blit(SURF_QUIT, RECT_QUIT)
     surfdisplay.blit(SURF_SOLVE, RECT_SOLVE)
 
     if message:   # message on top left corner
