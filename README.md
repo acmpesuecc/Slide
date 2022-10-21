@@ -1,6 +1,7 @@
 # Slide
 
 The popular and nostalgic; slide the number into order, puzzle implementation using python on pygame module, which I made as my 1st sem project.
+Slide is a very enticing game that not only boosts the user's logical and mathematical skills but also provides endless entertainment. Open to all ages. You can relive your childhood by playing the game and getting lost in nostalgia. 
 
 ## How does a slide puzzle work?!
 
