@@ -3,15 +3,6 @@ import sys
 import random
 from pygame.locals import *
 
-<<<<<<< HEAD
-
-#declarations
-BWIDTH = BHEIGHT = 4  # number of columns n rows in the board, will have to change in case of diff types of boards
-TSIZE = 80 # tile size
-WWIDTH = 640 # window width
-WHEIGHT = 480 # window height
-FPS = 150 #slide speed
-=======
 # declarations
 # number of columns n rows in the board, will have to change in case of diff types of boards
 BWIDTH = BHEIGHT = 4
@@ -19,7 +10,6 @@ TSIZE = 80  # tile size
 WWIDTH = 840  # window width
 WHEIGHT = 680  # window height
 FPS = 150  # slide speed
->>>>>>> 57d9976205b93669dcdb8c455a0206b6f2061493
 BLANK = None
 
 GENERATIONMOVES = 200
@@ -109,26 +99,6 @@ def main():
 
         if mainBoard == SOLVEDBOARD:
 
-<<<<<<< HEAD
-            import congratulation
-
-            congratulation.main_menu1()    
-
-
- 
-
-            drawBoard(mainBoard, msg)
-
-            
-
-
-            # checkForQuit()
-
-            
-
-        #actions n outcomes sync
-        for event in pygame.event.get(): # event handling loop
-=======
             msg = 'Solved! Use ijkl to change size and n for new puzzle'
 
             drawBoard(mainBoard, msg, 0)
@@ -137,7 +107,6 @@ def main():
 
         # actions n outcomes sync
         for event in pygame.event.get():  # event handling loop
->>>>>>> 57d9976205b93669dcdb8c455a0206b6f2061493
 
             if event.type == VIDEORESIZE:
                 resizeWindow(event.size)
