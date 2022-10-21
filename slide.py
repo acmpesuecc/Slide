@@ -2,13 +2,16 @@ import pygame
 import sys
 import random
 from pygame.locals import *
+from sklearn.model_selection import validation_curve
 
-# declarations
-BWIDTH = BHEIGHT = 4  # number of columns n rows in the board, will have to change in case of diff types of boards
-TSIZE = 60  # tile size
-WWIDTH = 840  # window width
-WHEIGHT = 680  # window height
-FPS = 150  # slide speed
+#declarations
+BWIDTH = BHEIGHT = 4  # number of columns and rows in the board right now
+NBWIDTH = NBHEIGHT = 4  # number of columns and rows in the board on next generation
+
+TSIZE = 80 # tile size
+WWIDTH = 640 # window width
+WHEIGHT = 480 # window height
+FPS = 150 #slide speed
 BLANK = None
 
 # colours
@@ -58,7 +61,9 @@ clock = pygame.time.Clock()
 
 def main():
 
-    global CLOCK, surfdisplay, BASICFONT, SURF_RESET, RECT_RESET, SURF_NEW, RECT_NEW, SURF_SOLVE, RECT_SOLVE, RECT_QUIT, SURF_QUIT
+    global CLOCK, surfdisplay, BASICFONT
+    global SURF_RESET, RECT_RESET, SURF_NEW, RECT_NEW, SURF_SOLVE, RECT_SOLVE, RECT_QUIT, SURF_QUIT
+    global NBWIDTH, NBHEIGHT
 
     pygame.init()
     CLOCK = pygame.time.Clock()
@@ -80,9 +85,10 @@ def main():
     SOLVEDBOARD = getStartingBoard()  # board in starting.
 
     allMoves = []  # list of moves made from the solved configuration
-
+    count=0
     # main game loop
-    while True:
+    running = True
+    while running:
 
         Move = None  # the direction, if any, a tile should slide
 
@@ -136,7 +142,6 @@ def main():
                         Move = DOWN
 
             elif event.type == KEYUP:  # check if the user pressed a key to slide a tile
-
                 if event.key in (K_LEFT, K_a) and isValidMove(mainBoard, LEFT):
 
                     Move = LEFT
@@ -153,14 +158,35 @@ def main():
 
                     Move = DOWN
 
+                elif event.key == K_i:
+                    NBHEIGHT -= 1
+                    if NBHEIGHT <= 1: NBHEIGHT = 2  # lowest possible height is 2
+
+                elif event.key == K_k:
+                    NBHEIGHT += 1
+
+                elif event.key == K_j:
+                    NBWIDTH -= 1
+                    if NBWIDTH <= 1: NBWIDTH = 2  # lowest possible width is 2
+
+                elif event.key == K_l:
+                    NBWIDTH += 1
+
+                elif event.key == K_g:
+                    mainBoard, solutionSeq = generateNewPuzzle(80)
+                    SOLVEDBOARD = getStartingBoard()
+                print("pressed")
+            elif event.type==QUIT:
+                running = False
+                # screen.blit(pygame.transform.scale(surfdisplay, screen.get_size()), (0,0))
+
         if Move:
 
             slideAnimation(mainBoard, Move, 'Click tile or press arrow keys to slide.', 8)  # show slide on screen
 
             makeMove(mainBoard, Move)
 
-            allMoves.append(Move)  # record the slide
-
+            allMoves.append(Move)  
         pygame.display.update()
 
         CLOCK.tick(60)
@@ -372,7 +398,17 @@ def slideAnimation(board, direction, message, animationSpeed):  # tile sliding a
 
 
 def generateNewPuzzle(numSlides):
-    # making numSlides number of moves from solved config and animating
+    #making numSlides number of moves from solved config and animating
+   
+    global BWIDTH, BHEIGHT
+    global XMARGIN, YMARGIN
+
+    BWIDTH = NBWIDTH
+    BHEIGHT = NBHEIGHT
+
+    #board margins
+    XMARGIN = int((WWIDTH - (TSIZE * BWIDTH + (BWIDTH - 1))) / 2)
+    YMARGIN = int((WHEIGHT - (TSIZE * BHEIGHT + (BHEIGHT - 1))) / 2)
 
     sequence = []
     board = getStartingBoard()
