@@ -2,6 +2,12 @@ import pygame
 import sys
 import random
 from pygame.locals import *
+from pygame import mixer
+
+pygame.init()
+
+mixer.music.load("background.wav")
+mixer.music.play()
 
 # declarations
 # number of columns n rows in the board, will have to change in case of diff types of boards

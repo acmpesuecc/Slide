@@ -17,14 +17,9 @@ def get_font(size): # Returns Press-Start-2P in the desired size
 
 
 def music():
-    song = pygame.mixer.music("music.wav")
-    pg.mixer.music.play(-1)
-    music_paused = False
-    music_paused = not music_paused
-    if music_paused:
-        song.pause()
-    else:
-        song.unpause()
+    pygame.mixer.music("music.wav")
+    pg.mixer.music.play()
+
 
 def play():
     while True:
@@ -90,11 +85,11 @@ def main_menu_o():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-            if event.type == pygame.MOUSEBUTTONDOWN:
+            elif event.type == pygame.MOUSEBUTTONDOWN:
                 if PLAY_BUTTON.checkForInput(MENU_MOUSE_POS):
                     music()
             
-                if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
+                elif QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
                     pygame.quit()
                     sys.exit()
 
