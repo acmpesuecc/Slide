@@ -66,12 +66,6 @@ def main():
     BASICFONT = pygame.font.Font('freesansbold.ttf', FONTSIZE)
 
 
-
-    # Store the option buttons and their rectangles in OPTIONS.
-    SURF_RESET, RECT_RESET = makeText('Reset',    TC, TILECOLOR, WWIDTH - 120, WHEIGHT - 120)
-    SURF_NEW, RECT_NEW     = makeText('New Game', TC, TILECOLOR, WWIDTH - 120, WHEIGHT - 90)
-    SURF_QUIT, RECT_QUIT   = makeText('End Game', TC, TILECOLOR, WWIDTH - 120, WHEIGHT - 30)
-    SURF_SOLVE, RECT_SOLVE = makeText('Solve',    TC, TILECOLOR, WWIDTH - 120, WHEIGHT - 60)
      
     mainBoard, solutionSeq = generateNewPuzzle(80)
 
@@ -82,6 +76,15 @@ def main():
 
     # main game loop
     while True:
+        # Store the option buttons and their rectangles in OPTIONS.
+        SURF_RESET, RECT_RESET = makeText('Reset',    TC, TILECOLOR, WWIDTH - 120, WHEIGHT - 120)
+        surfdisplay.blit(SURF_RESET, RECT_RESET)
+        SURF_NEW, RECT_NEW     = makeText('New Game', TC, TILECOLOR, WWIDTH - 120, WHEIGHT - 90)
+        surfdisplay.blit(SURF_NEW, RECT_NEW)
+        SURF_QUIT, RECT_QUIT   = makeText('End Game', TC, TILECOLOR, WWIDTH - 120, WHEIGHT - 30)
+        surfdisplay.blit(SURF_QUIT, RECT_QUIT)
+        SURF_SOLVE, RECT_SOLVE = makeText('Solve',    TC, TILECOLOR, WWIDTH - 120, WHEIGHT - 60)
+        surfdisplay.blit(SURF_SOLVE, RECT_SOLVE)
 
         Move = None # the direction, if any, a tile should slide
 
@@ -108,7 +111,9 @@ def main():
         #actions n outcomes sync
         for event in pygame.event.get(): # event handling loop
 
-            if event.type == MOUSEBUTTONUP:
+            if event.type == VIDEORESIZE:
+                drawBoard(mainBoard, '')
+            elif event.type == MOUSEBUTTONUP:
 
                 spotx, spoty = getSpotClicked(mainBoard, event.pos[0], event.pos[1])
 

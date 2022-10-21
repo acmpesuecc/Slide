@@ -33,6 +33,4 @@ To contribute to this project please read [how to contribute](https://github.com
 Your contribution is highly appreciated 🙏.</br>
 
 > This repository is maintained by [bluishhh](https://github.com/bluishhh). </br>
-> REPOSITORY ACCESS TIMINGS-</br>
-> Open access till 9 pm.</br>
-> Block time of 30 mins per person after that.
+
