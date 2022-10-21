@@ -1,6 +1,6 @@
 # Slide
 
-The popular and nostalgic; slide the number into order, puzzle implementation using python on pygame module, which I made as my 1st sem project.
+Welcome to Slide! A fun, interactive 2D tile puzzle game where the tiles are given to you in a random order and you're expected to arrange it in ascending order using your arrow keys or by using your mouse. The game is designed to look as minimalistic and user friendly as possible to suit all age groups
 
 ## How does a slide puzzle work?!
 
@@ -36,3 +36,4 @@ Your contribution is highly appreciated 🙏.</br>
 > REPOSITORY ACCESS TIMINGS-</br>
 > Open access till 9 pm.</br>
 > Block time of 30 mins per person after that.
+
