@@ -77,7 +77,7 @@ def main():
 
     pygame.display.set_caption('Slide Puzzle Game')
 
-    BASICFONT = pygame.font.Font('HKGrotesk-Regular.ttf', FONTSIZE)
+    BASICFONT = pygame.font.Font('Assets\Fonts\HKGrotesk-Regular.ttf', FONTSIZE)
 
     # Store the option buttons and their rectangles in OPTIONS.
     SURF_RESET, RECT_RESET = makeText(
