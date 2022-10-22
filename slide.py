@@ -6,7 +6,7 @@ from pygame import mixer
 
 pygame.init()
 
-mixer.music.load("background.wav")
+mixer.music.load("Assets\\Music\\background.wav")
 mixer.music.play()
 
 # declarations
