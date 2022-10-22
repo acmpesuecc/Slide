@@ -79,13 +79,13 @@ def main():
     pygame.display.set_caption('image')
 
     # create a surface object, image is drawn on it.
-    imp = pygame.image.load("Assets\Images\slidelogo.png").convert()
+    imp = pygame.image.load("assets\imgs\slidelogo.png").convert()
 
     # Using blit to copy content from one surface to other
     surfdisplay.blit(imp, (0, 0))
     pygame.display.set_caption('Slide Puzzle Game')
 
-    BASICFONT = pygame.font.Font('HKGrotesk-Regular.ttf', FONTSIZE)
+    BASICFONT = pygame.font.Font('assets\\fonts\\HKGrotesk-Regular.ttf', FONTSIZE)
 
     # Store the option buttons and their rectangles in OPTIONS.
     SURF_RESET, RECT_RESET = makeText('Reset', TC, TILECOLOR, WWIDTH - 150, WHEIGHT - 140)
@@ -357,7 +357,7 @@ def drawTile(tilex, tiley, number, driftx=0, drifty=0):  # drawing a tile
     left, top = getpixelcoord(tilex, tiley)
     pygame.draw.rect(surfdisplay, BLACK, (left + driftx, top + drifty, TSIZE, TSIZE), border_radius=8)
     #pygame.draw.rect(surfdisplay, GREEN, (left + driftx, top + drifty, TSIZE, TSIZE), 3, border_radius=8)
-    img = pygame.image.load(f'./gen_imgs/brandy{BWIDTH}x{BWIDTH}_{number}.png')
+    img = pygame.image.load(f'assets/imgs/gen_imgs/brandy{BWIDTH}x{BWIDTH}_{number}.png')
     textSurf = BASICFONT.render(str(number), True, TC)
     textRect = img.get_rect()
     textRect.center = left + int(TSIZE / 2) + \
