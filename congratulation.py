@@ -1,5 +1,4 @@
-import pygame
-import sys
+import pygame, sys
 from button import Button
 from slide import *
 
@@ -8,12 +7,10 @@ pygame.init()
 SCREEN = pygame.display.set_mode((840, 680))
 pygame.display.set_caption("Menu")
 
-BG = pygame.image.load("Assets\Images\Background.png")
+BG = pygame.image.load("assets/Background.png")
 
-
-def get_font(size):  # Returns Press-Start-2P in the desired size
-    return pygame.font.Font("Assets\Fonts\HKGrotesk-Regular.ttf", size)
-
+def get_font(size): # Returns Press-Start-2P in the desired size
+    return pygame.font.Font("assets/font.ttf", size)
 
 def play():
     while True:
@@ -25,8 +22,8 @@ def play():
         PLAY_RECT = PLAY_TEXT.get_rect(center=(640, 260))
         SCREEN.blit(PLAY_TEXT, PLAY_RECT)
 
-        PLAY_BACK = Button(image=None, pos=(640, 460),
-                           text_input="BACK", font=get_font(75), base_color="White", hovering_color="Green")
+        PLAY_BACK = Button(image=None, pos=(640, 460), 
+                            text_input="BACK", font=get_font(75), base_color="White", hovering_color="Green")
 
         PLAY_BACK.changeColor(PLAY_MOUSE_POS)
         PLAY_BACK.update(SCREEN)
@@ -40,7 +37,7 @@ def play():
                     main_menu1()
 
         pygame.display.update()
-
+    
 
 def main_menu1():
     while True:
@@ -62,7 +59,7 @@ def main_menu1():
         for button in [PLAY_BUTTON, QUIT_BUTTON]:
             button.changeColor(MENU_MOUSE_POS)
             button.update(SCREEN)
-
+        
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -70,12 +67,11 @@ def main_menu1():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if PLAY_BUTTON.checkForInput(MENU_MOUSE_POS):
                     main()
-
+            
                 if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
                     pygame.quit()
                     sys.exit()
 
         pygame.display.update()
-
 
 main_menu1()

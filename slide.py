@@ -6,7 +6,7 @@ from pygame import mixer
 
 pygame.init()
 
-mixer.music.load("Assets\\Music\\background.wav")
+mixer.music.load("background.wav")
 mixer.music.play()
 
 # declarations
@@ -85,7 +85,7 @@ def main():
     surfdisplay.blit(imp, (0, 0))
     pygame.display.set_caption('Slide Puzzle Game')
 
-    BASICFONT = pygame.font.Font('Assets\Fonts\HKGrotesk-Regular.ttf', FONTSIZE)
+    BASICFONT = pygame.font.Font('HKGrotesk-Regular.ttf', FONTSIZE)
 
     # Store the option buttons and their rectangles in OPTIONS.
     SURF_RESET, RECT_RESET = makeText('Reset', TC, TILECOLOR, WWIDTH - 150, WHEIGHT - 140)
@@ -356,13 +356,14 @@ def drawTile(tilex, tiley, number, driftx=0, drifty=0):  # drawing a tile
 
     left, top = getpixelcoord(tilex, tiley)
     pygame.draw.rect(surfdisplay, BLACK, (left + driftx, top + drifty, TSIZE, TSIZE), border_radius=8)
-    pygame.draw.rect(surfdisplay, GREEN, (left + driftx, top + drifty, TSIZE, TSIZE), 3, border_radius=8)
+    #pygame.draw.rect(surfdisplay, GREEN, (left + driftx, top + drifty, TSIZE, TSIZE), 3, border_radius=8)
+    img = pygame.image.load(f'./gen_imgs/brandy{BWIDTH}x{BWIDTH}_{number}.png')
     textSurf = BASICFONT.render(str(number), True, TC)
-    textRect = textSurf.get_rect()
+    textRect = img.get_rect()
     textRect.center = left + int(TSIZE / 2) + \
         driftx, top + int(TSIZE / 2) + drifty
 
-    surfdisplay.blit(textSurf, textRect)
+    surfdisplay.blit(img, textRect)
 
 
 # creating Surface and Rect objects for some text like a text box

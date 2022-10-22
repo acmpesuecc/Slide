@@ -1,7 +1,7 @@
-import pygame
-import sys
+import pygame, sys
 from button import Button
 from slide import *
+
 
 
 pygame.init()
@@ -9,7 +9,7 @@ pygame.init()
 SCREEN = pygame.display.set_mode((840, 680))
 pygame.display.set_caption("Menu")
 
-BG = pygame.image.load("Assets\Images\Background.png")
+BG = pygame.image.load("assets/Background.png")
 # set the pygame window name
 pygame.display.set_caption('image')
 
@@ -24,6 +24,8 @@ pygame.display.set_caption('Slide Puzzle Game')
 def get_font(size):  # Returns Press-Start-2P in the desired size
     return pygame.font.Font("Assets\Fonts\HKGrotesk-Regular.ttf", size)
 
+def get_font(size): # Returns Press-Start-2P in the desired size
+    return pygame.font.Font("assets/font.ttf", size)
 
 def play():
     while True:
@@ -49,8 +51,7 @@ def play():
                     main_menu()
 
         pygame.display.update()
-
-
+    
 def options():
     while True:
         OPTIONS_MOUSE_POS = pygame.mouse.get_pos()
@@ -61,8 +62,8 @@ def options():
         OPTIONS_RECT = OPTIONS_TEXT.get_rect(center=(640, 260))
         SCREEN.blit(OPTIONS_TEXT, OPTIONS_RECT)
 
-        OPTIONS_BACK = Button(image=None, pos=(640, 460),
-                              text_input="BACK", font=get_font(75), base_color="Black", hovering_color="Green")
+        OPTIONS_BACK = Button(image=None, pos=(640, 460), 
+                            text_input="BACK", font=get_font(75), base_color="Black", hovering_color="Green")
 
         OPTIONS_BACK.changeColor(OPTIONS_MOUSE_POS)
         OPTIONS_BACK.update(SCREEN)
@@ -77,6 +78,8 @@ def options():
 
         pygame.display.update()
 
+
+    
 
 def main_menu():
     while True:
@@ -98,7 +101,7 @@ def main_menu():
         for button in [PLAY_BUTTON, OPTIONS_BUTTON, QUIT_BUTTON]:
             button.changeColor(MENU_MOUSE_POS)
             button.update(SCREEN)
-
+        
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -114,6 +117,5 @@ def main_menu():
                     sys.exit()
 
         pygame.display.update()
-
 
 main_menu()
