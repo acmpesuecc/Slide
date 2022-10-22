@@ -5,7 +5,7 @@ from slide import *
 
 pygame.init()
 
-SCREEN = pygame.display.set_mode((1280, 720))
+SCREEN = pygame.display.set_mode((840, 680))
 pygame.display.set_caption("Menu")
 
 BG = pygame.image.load("Assets\Images\Background.png")
@@ -49,13 +49,13 @@ def main_menu1():
         MENU_MOUSE_POS = pygame.mouse.get_pos()
 
         MENU_TEXT = get_font(50).render("CONGRATS ON COMPLETION!", True, "#29d250")
-        MENU_RECT = MENU_TEXT.get_rect(center=(640, 100))
+        MENU_RECT = MENU_TEXT.get_rect(center=(410, 100))
 
-        PLAY_BUTTON = Button(image=pygame.image.load("Assets\Images\Options Rect.png"), pos=(640, 250),
-                             text_input="TRY AGAIN", font=get_font(60), base_color="#d7fcd4", hovering_color="White")
+        PLAY_BUTTON = Button(image=pygame.image.load("Assets\Images\play_back.png"), pos=(420, 250),
+                             text_input="PLAY AGAIN", font=get_font(20), base_color="#000000", hovering_color="White")
 
-        QUIT_BUTTON = Button(image=pygame.image.load("Assets\Images\Quit Rect.png"), pos=(640, 450),
-                             text_input="QUIT", font=get_font(60), base_color="#d7fcd4", hovering_color="White")
+        QUIT_BUTTON = Button(image=pygame.image.load("Assets\Images\quit_back.png"), pos=(420, 350),
+                             text_input="QUIT", font=get_font(20), base_color="#d7fcd4", hovering_color="White")
 
         SCREEN.blit(MENU_TEXT, MENU_RECT)
 

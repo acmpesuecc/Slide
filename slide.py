@@ -75,37 +75,42 @@ def main():
 
     surfdisplay = pygame.display.set_mode((WWIDTH, WHEIGHT), pygame.RESIZABLE)
 
+    # set the pygame window name
+    pygame.display.set_caption('image')
+
+    # create a surface object, image is drawn on it.
+    imp = pygame.image.load("Assets\Images\slidelogo.png").convert()
+
+    # Using blit to copy content from one surface to other
+    surfdisplay.blit(imp, (0, 0))
     pygame.display.set_caption('Slide Puzzle Game')
 
     BASICFONT = pygame.font.Font('Assets\Fonts\HKGrotesk-Regular.ttf', FONTSIZE)
 
     # Store the option buttons and their rectangles in OPTIONS.
-    SURF_RESET, RECT_RESET = makeText(
-        'Reset', TC, TILECOLOR, WWIDTH - 120, WHEIGHT - 120)
-    SURF_NEW, RECT_NEW = makeText(
-        'New Game', TC, TILECOLOR, WWIDTH - 120, WHEIGHT - 90)
-    SURF_SOLVE, RECT_SOLVE = makeText(
-        'Solve', TC, TILECOLOR, WWIDTH - 120, WHEIGHT - 60)
+    SURF_RESET, RECT_RESET = makeText('Reset', TC, TILECOLOR, WWIDTH - 150, WHEIGHT - 140)
+    SURF_NEW, RECT_NEW = makeText('New Game', TC, TILECOLOR, WWIDTH - 150, WHEIGHT - 100)
+    SURF_SOLVE, RECT_SOLVE = makeText('Solve', TC, TILECOLOR, WWIDTH - 150, WHEIGHT - 60)
 
     mainBoard, solutionSeq = generateNewPuzzle(80)
 
-    SOLVEDBOARD = getStartingBoard()  # board in starting.
+    SOLVEDBOARD = getStartingBoard()  # board in starting!
 
-    allMoves = []  # list of moves made from the solved configuration
+    allMoves = []  # List of moves made from the solved configuration
     running = True
 
     # main game loop
     while running:
 
-        Move = None  # the direction, if any, a tile should slide
+        Move = None  # The direction, if any, a tile should slide
 
         msg = 'Click tile or press arrow keys to slide. r to reset'  # contains the message to show in the upper left corner.
 
         if mainBoard == SOLVEDBOARD:
 
-            msg = 'Solved! Use ijkl to change size and n for new puzzle'
+            msg = "Solved! Use 'i', 'j', 'k', 'l' to change size and n for new puzzle"
 
-            drawBoard(mainBoard, msg, 0)
+            drawBoard(mainBoard, msg, 200)
 
             checkForQuit()
 

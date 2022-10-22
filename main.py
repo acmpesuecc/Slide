@@ -6,10 +6,19 @@ from slide import *
 
 pygame.init()
 
-SCREEN = pygame.display.set_mode((1280, 720))
+SCREEN = pygame.display.set_mode((840, 680))
 pygame.display.set_caption("Menu")
 
 BG = pygame.image.load("Assets\Images\Background.png")
+# set the pygame window name
+pygame.display.set_caption('image')
+
+# create a surface object, image is drawn on it.
+imp = pygame.image.load("Assets\Images\slidelogo.png").convert()
+
+# Using blit to copy content from one surface to other
+SCREEN.blit(imp, (0, 0))
+pygame.display.set_caption('Slide Puzzle Game')
 
 
 def get_font(size):  # Returns Press-Start-2P in the desired size
@@ -26,8 +35,7 @@ def play():
         PLAY_RECT = PLAY_TEXT.get_rect(center=(640, 260))
         SCREEN.blit(PLAY_TEXT, PLAY_RECT)
 
-        PLAY_BACK = Button(image=None, pos=(640, 460),
-                           text_input="BACK", font=get_font(75), base_color="White", hovering_color="Green")
+        PLAY_BACK = Button(image=None, pos=(640, 460), text_input="BACK", font=get_font(75), base_color="White", hovering_color="Green")
 
         PLAY_BACK.changeColor(PLAY_MOUSE_POS)
         PLAY_BACK.update(SCREEN)
@@ -76,15 +84,14 @@ def main_menu():
 
         MENU_MOUSE_POS = pygame.mouse.get_pos()
 
-        MENU_TEXT = get_font(100).render("MAIN MENU", True, "#29d250")
-        MENU_RECT = MENU_TEXT.get_rect(center=(640, 100))
-
-        PLAY_BUTTON = Button(image=pygame.image.load("Assets\Images\Play Rect.png"), pos=(640, 250),
-                             text_input="PLAY", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
-        OPTIONS_BUTTON = Button(image=pygame.image.load("Assets\Images\Options Rect.png"), pos=(640, 400),
-                                text_input="OPTIONS", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
-        QUIT_BUTTON = Button(image=pygame.image.load("Assets\Images\Quit Rect.png"), pos=(640, 550),
-                             text_input="QUIT", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
+        MENU_TEXT = get_font(80).render("::::: SLIDE :::::", True, "#29d250")
+        MENU_RECT = MENU_TEXT.get_rect(center=(420, 100))
+        PLAY_BUTTON = Button(image=pygame.image.load("Assets\Images\play_back.png"), pos=(420, 250),
+                             text_input="PLAY", font=get_font(20), base_color="#000000", hovering_color="White")
+        OPTIONS_BUTTON = Button(image=pygame.image.load("Assets\Images\opt_back.png"), pos=(420, 300),
+                                text_input="OPTIONS", font=get_font(20), base_color="#d7fcd4", hovering_color="White")
+        QUIT_BUTTON = Button(image=pygame.image.load("Assets\Images\quit_back.png"), pos=(420, 480),
+                             text_input="QUIT", font=get_font(20), base_color="#d7fcd4", hovering_color="White")
 
         SCREEN.blit(MENU_TEXT, MENU_RECT)
 
