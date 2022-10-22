@@ -1,5 +1,6 @@
 import pygame, sys, random
 from pygame.locals import *
+import cv2
 
 #declarations
 BWIDTH = BHEIGHT = 4  # number of columns n rows in the board, will have to change in case of diff types of boards
@@ -186,6 +187,28 @@ def terminate():
     sys.exit()
 
 
+# To slice Brandy into n*n images
+def slice(n):
+    img = cv2.imread('brandy.png')
+    dimensions = img.shape
+    height, width = dimensions[0], dimensions[1]
+    
+    pos_y = 0
+    del_height, del_width = int(height/n), int(width/n) # Height, width to increment by
+    count = 1 # Keeps track of the number of sliced images
+
+    for i in range(n):
+        pos_x = 0
+
+        for j in range(n):
+            cropped = img[pos_y:pos_y+del_height, pos_x:pos_x+del_width]
+            
+            # Sliced images are stored in a separate assets folder
+            cv2.imwrite(f"Assets/brandy_{n}x{n}_{count}.png", cropped)
+
+            pos_x += del_width
+            count += 1
+        pos_y += del_height
 
 
 def getStartingBoard():# Return a board data structure with tiles in the solved state.
