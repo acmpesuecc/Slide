@@ -12,7 +12,7 @@ mixer.music.play()
 # declarations
 # number of columns n rows in the board, will have to change in case of diff types of boards
 BWIDTH = BHEIGHT = 4
-TSIZE = 80  # tile size
+TSIZE = 320//BWIDTH  # tile size
 WWIDTH = 840  # window width
 WHEIGHT = 680  # window height
 FPS = 150  # slide speed
