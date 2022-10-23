@@ -103,11 +103,9 @@ def main():
 
         if mainBoard == SOLVEDBOARD:
 
-            msg = 'Solved! Use ijkl to change size and n for new puzzle'
-
-            drawBoard(mainBoard, msg, 0)
-
-            checkForQuit()
+            import congratulation
+            congratulation.main_menu1()
+            
 
         # actions n outcomes sync
         for event in pygame.event.get():  # event handling loop

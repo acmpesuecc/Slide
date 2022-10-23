@@ -49,7 +49,7 @@ def main_menu1():
         MENU_RECT = MENU_TEXT.get_rect(center=(640, 100))
 
         PLAY_BUTTON = Button(image=pygame.image.load("assets/Options Rect.png"), pos=(640, 250), 
-                            text_input="TRY AGAIN", font=get_font(60), base_color="#d7fcd4", hovering_color="White")
+                            text_input="PLAY AGAIN", font=get_font(60), base_color="#d7fcd4", hovering_color="White")
 
         QUIT_BUTTON = Button(image=pygame.image.load("assets/Quit Rect.png"), pos=(640, 450), 
                             text_input="QUIT", font=get_font(60), base_color="#d7fcd4", hovering_color="White")
