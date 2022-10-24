@@ -6,7 +6,7 @@ from pygame import mixer
 
 pygame.init()
 
-mixer.music.load("background.wav")
+mixer.music.load("./assets/music/background.wav")
 mixer.music.play()
 
 # declarations
@@ -79,13 +79,13 @@ def main():
     pygame.display.set_caption('image')
 
     # create a surface object, image is drawn on it.
-    imp = pygame.image.load("assets\imgs\slidelogo.png").convert()
+    imp = pygame.image.load("./assets/imgs/slidelogo.png").convert()
 
     # Using blit to copy content from one surface to other
     surfdisplay.blit(imp, (0, 0))
     pygame.display.set_caption('Slide Puzzle Game')
 
-    BASICFONT = pygame.font.Font('assets\\fonts\\HKGrotesk-Regular.ttf', FONTSIZE)
+    BASICFONT = pygame.font.Font('./assets/fonts/HKGrotesk-Regular.ttf', FONTSIZE)
 
     # Store the option buttons and their rectangles in OPTIONS.
     SURF_RESET, RECT_RESET = makeText('Reset', TC, TILECOLOR, WWIDTH - 150, WHEIGHT - 140)
