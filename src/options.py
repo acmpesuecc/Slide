@@ -63,7 +63,7 @@ def main_menu_o():
         PLAY_BUTTON = Button(image=pygame.image.load("assets\imgs\play_back.png"), pos=(420, 250),
                              text_input="MUSIC OFF", font=get_font(20), base_color="#000000", hovering_color="White")
         SHUFFLE_BUTTON = Button(image=pygame.image.load("assets\imgs\opt_back.png"), pos=(420, 300),
-                                text_input="SHUFFLE MUSIC", font=get_font(20), base_color="#d7fcd4", hovering_color="White")
+                                text_input="CHANGE MUSIC", font=get_font(20), base_color="#d7fcd4", hovering_color="White")
         BACK_BUTTON = Button(image=pygame.image.load("assets\imgs\quit_back.png"), pos=(420, 480),
                              text_input="BACK", font=get_font(20), base_color="#d7fcd4", hovering_color="White")
 
