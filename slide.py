@@ -96,7 +96,7 @@ def main():
 
     SOLVEDBOARD = getStartingBoard()  # board in starting!
 
-    allMoves = []  # List of moves made from the solved configuration
+    allMoves = []  # List of moves made from the solved configuration.
     running = True
 
     # main game loop
