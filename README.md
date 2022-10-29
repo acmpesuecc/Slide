@@ -26,7 +26,7 @@ pip install -r requirements.txt
 python slide.py
 ```
 
-Volla! You are all set :D
+Volla! You are all set :)
 
 ## Contribution
 
