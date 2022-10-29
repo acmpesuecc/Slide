@@ -8,7 +8,7 @@ Slide is a very enticing game that not only boosts the user's logical and mathem
 Most sliding puzzles are two-dimensional. The pieces cannot be lifted out of the frame or rearranged in any way, except by sliding them into an empty space. They are also called sliding-block puzzles or simply sliders. The goal of a sliding puzzle is to arrange the pieces in a particular pattern.
 Have fun :)
 
-## Get Started
+### Get Started.
 
 Wanna try out Slide?
 
