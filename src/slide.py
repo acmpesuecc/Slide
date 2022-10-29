@@ -10,7 +10,7 @@ import main
 pygame.init()
 
 # in-game music
-MUSIC_PATH = "assets\\music\\"
+MUSIC_PATH = "assets\music\\"
 music_list = []
 for x in os.listdir(MUSIC_PATH):
     if x.endswith(".wav"):
@@ -24,7 +24,7 @@ mixer.music.play()
 BWIDTH = BHEIGHT = 4
 TSIZE = 320//BWIDTH  # tile size
 WWIDTH = 840  # window width
-WHEIGHT = 680  # window height
+WHEIGHT = 680  # window height ....
 FPS = 150  # slide speed
 BLANK = None
 
@@ -106,7 +106,7 @@ def slide_main():
 
     SOLVEDBOARD = getStartingBoard()  # board in starting!
 
-    allMoves = []  # List of moves made from the solved configuration
+    allMoves = []  # List of moves made from the solved configuration.
     running = True
 
     # main game loop

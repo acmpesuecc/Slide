@@ -14,7 +14,7 @@ Wanna try out Slide?
 
 1. [Fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) and [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) the files into a directory on your device.
 
-2. Install the dependencies
+2. Install the dependencies.
 
 ```bash
 pip install -r requirements.txt
@@ -23,12 +23,12 @@ pip install -r requirements.txt
 3. Launch a terminal in the directory you just cloned into and type in this command.
 
 ```
-python slide.py
+python slide.py.
 ```
 
-Volla! You are all set :D
+Volla! You are all set :)
 
-## Contribution
+### Contribution
 
 To contribute to this project please read [how to contribute](https://github.com/bluishhh/Slide/blob/main/contribute.md).<br>
 Your contribution is highly appreciated 🙏.</br>
