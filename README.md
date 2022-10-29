@@ -23,7 +23,7 @@ pip install -r requirements.txt
 3. Launch a terminal in the directory you just cloned into and type in this command.
 
 ```
-python slide.py
+python slide.py.
 ```
 
 Volla! You are all set :)
