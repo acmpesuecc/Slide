@@ -1,7 +1,7 @@
 import pygame
 import sys
 import random
-from random import randint
+from random import shuffle, randint
 from pygame.locals import *
 from pygame import mixer
 import os
@@ -19,10 +19,16 @@ intro_music = music_list[0]
 mixer.music.load(f"./assets/music/{intro_music}")
 mixer.music.play()
 
+IMAGE_PATH = "assets\\imgs\\puzzle\\"
+image_list = []
+for x in os.listdir(IMAGE_PATH):
+    if x.endswith(".png"):
+        image_list.append(x)
+
 # declarations
 # number of columns n rows in the board, will have to change in case of diff types of boards
 BWIDTH = BHEIGHT = 4
-TSIZE = 320//BWIDTH  # tile size
+TSIZE = 320//BWIDTH  # tile sizesrc/slide.py
 WWIDTH = 840  # window width
 WHEIGHT = 680  # window height ....
 FPS = 150  # slide speed
@@ -76,7 +82,7 @@ clock = pygame.time.Clock()
 def slide_main():
 
     global CLOCK, surfdisplay, BASICFONT
-    global SURF_RESET, RECT_RESET, SURF_NEW, RECT_NEW, SURF_SOLVE, RECT_SOLVE, SURF_BACK, RECT_BACK
+    global SURF_RESET, RECT_RESET, SURF_NEW, RECT_NEW, SURF_SOLVE, RECT_SOLVE, SURF_BACK, RECT_BACK, SURF_SHUF, RECT_SHUF
     global BWIDTH, BHEIGHT
 
     pygame.init()
@@ -101,6 +107,7 @@ def slide_main():
     SURF_NEW, RECT_NEW = makeText('New Game', TC, TILECOLOR, WWIDTH - 150, WHEIGHT - 100)
     SURF_SOLVE, RECT_SOLVE = makeText('Solve', TC, TILECOLOR, WWIDTH - 150, WHEIGHT - 60)
     SURF_BACK, RECT_BACK = makeText('Back to Menu', TC, TILECOLOR, WWIDTH - 800, WHEIGHT - 100)
+    SURF_SHUF, RECT_SHUF = makeText('Change picture', TC, TILECOLOR, WWIDTH - 800, WHEIGHT - 140)
 
     mainBoard, solutionSeq = generateNewPuzzle(80)
 
@@ -156,6 +163,11 @@ def slide_main():
                     # clicked on Back to menu button
                     elif RECT_BACK.collidepoint(event.pos):
                         main.main_menu()
+
+                    elif RECT_SHUF.collidepoint(event.pos):
+                        rand_image(image_list)
+                        mainBoard, solutionSeq = generateNewPuzzle(80)
+                        allMoves = []
 
                     # clicked on the End Game button
                 else:    # check if the clicked tile was next to the blank spot
@@ -363,13 +375,14 @@ def getSpotClicked(board, x, y):
 
     return (None, None)
 
-
 def drawTile(tilex, tiley, number, driftx=0, drifty=0):  # drawing a tile
+    chosen_image = image_list[0]
+    chosen_image_parsed = chosen_image[:-4]
 
     left, top = getpixelcoord(tilex, tiley)
     pygame.draw.rect(surfdisplay, BLACK, (left + driftx, top + drifty, TSIZE, TSIZE), border_radius=8)
     #pygame.draw.rect(surfdisplay, GREEN, (left + driftx, top + drifty, TSIZE, TSIZE), 3, border_radius=8)
-    img = pygame.image.load(f'assets/imgs/gen_imgs/brandy{BWIDTH}x{BWIDTH}_{number}.png')
+    img = pygame.image.load(f'assets/imgs/gen_imgs/{chosen_image_parsed}{BWIDTH}x{BWIDTH}_{number}.png')
     textSurf = BASICFONT.render(str(number), True, TC)
     textRect = img.get_rect()
     textRect.center = left + int(TSIZE / 2) + \
@@ -399,6 +412,7 @@ def drawBoard(board, message, x):  # current board creation
     surfdisplay.blit(SURF_NEW, RECT_NEW)
     surfdisplay.blit(SURF_SOLVE, RECT_SOLVE)
     surfdisplay.blit(SURF_BACK, RECT_BACK)
+    surfdisplay.blit(SURF_SHUF, RECT_SHUF)
 
     if message:   # message on top left corner
         textSurf, textRect = makeText(message, MESSAGECOLOR, WHITE, ((WWIDTH / 3) - x), WHEIGHT / 6)
@@ -519,6 +533,9 @@ def shuffle_music(music_list):
     chosen_music = music_list[rand_shuffle]
     mixer.music.load(f"./assets/music/{chosen_music}")
     mixer.music.play()
+
+def rand_image(image_list):
+    shuffle(image_list)
 
 if __name__ == '__main__':
     main()
