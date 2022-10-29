@@ -14,7 +14,7 @@ mixer.music.play()
 BWIDTH = BHEIGHT = 4
 TSIZE = 320//BWIDTH  # tile size
 WWIDTH = 840  # window width
-WHEIGHT = 680  # window height
+WHEIGHT = 680  # window height ....
 FPS = 150  # slide speed
 BLANK = None
 
