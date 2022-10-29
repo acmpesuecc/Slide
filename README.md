@@ -28,7 +28,7 @@ python slide.py
 
 Volla! You are all set :)
 
-## Contribution
+### Contribution
 
 To contribute to this project please read [how to contribute](https://github.com/bluishhh/Slide/blob/main/contribute.md).<br>
 Your contribution is highly appreciated 🙏.</br>
