@@ -117,7 +117,7 @@ def main_menu():
                     pygame.quit()
                     sys.exit()
 
-        pygame.display.update()
+        pygame.display.update()   #.
 
 
 main_menu()
