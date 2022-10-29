@@ -14,7 +14,7 @@ Wanna try out Slide?
 
 1. [Fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) and [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) the files into a directory on your device.
 
-2. Install the dependencies
+2. Install the dependencies.
 
 ```bash
 pip install -r requirements.txt
