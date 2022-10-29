@@ -108,7 +108,7 @@ def main_menu():
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if PLAY_BUTTON.checkForInput(MENU_MOUSE_POS):
-                    main()
+                    slide_main()
                 if OPTIONS_BUTTON.checkForInput(MENU_MOUSE_POS):
                     import options
                     options.main_menu_o()

@@ -1,10 +1,11 @@
 import pygame
 import sys
 import random
+from random import randint
 from pygame.locals import *
 from pygame import mixer
-from random import randint
 import os
+import main
 
 pygame.init()
 
@@ -72,11 +73,10 @@ clock = pygame.time.Clock()
 
 # button setup
 
-
-def main():
+def slide_main():
 
     global CLOCK, surfdisplay, BASICFONT
-    global SURF_RESET, RECT_RESET, SURF_NEW, RECT_NEW, SURF_SOLVE, RECT_SOLVE
+    global SURF_RESET, RECT_RESET, SURF_NEW, RECT_NEW, SURF_SOLVE, RECT_SOLVE, SURF_BACK, RECT_BACK
     global BWIDTH, BHEIGHT
 
     pygame.init()
@@ -100,6 +100,7 @@ def main():
     SURF_RESET, RECT_RESET = makeText('Reset', TC, TILECOLOR, WWIDTH - 150, WHEIGHT - 140)
     SURF_NEW, RECT_NEW = makeText('New Game', TC, TILECOLOR, WWIDTH - 150, WHEIGHT - 100)
     SURF_SOLVE, RECT_SOLVE = makeText('Solve', TC, TILECOLOR, WWIDTH - 150, WHEIGHT - 60)
+    SURF_BACK, RECT_BACK = makeText('Back to Menu', TC, TILECOLOR, WWIDTH - 800, WHEIGHT - 100)
 
     mainBoard, solutionSeq = generateNewPuzzle(80)
 
@@ -151,6 +152,10 @@ def main():
                     elif RECT_SOLVE.collidepoint(event.pos):
                         resetAnimation(mainBoard, solutionSeq + allMoves)
                         allMoves = []
+
+                    # clicked on Back to menu button
+                    elif RECT_BACK.collidepoint(event.pos):
+                        main.main_menu()
 
                     # clicked on the End Game button
                 else:    # check if the clicked tile was next to the blank spot
@@ -341,12 +346,10 @@ def getRandomMove(board, lastMove=None):
     # return a random move from the list of remaining moves
     return random.choice(validMoves)
 
-
 def getpixelcoord(tileX, tileY):  # gives value of top left coordinates of a tile
     left = XMARGIN + (tileX * TSIZE) + (tileX - 1)
     top = YMARGIN + (tileY * TSIZE) + (tileY - 1)
     return (left, top)
-
 
 # from the x & y pixel coordinates, get the x & y board coordinates
 def getSpotClicked(board, x, y):
@@ -383,13 +386,11 @@ def makeText(text, color, bgcolor, top, left):
     textRect.topleft = (top, left)
     return (textSurf, textRect)
 
-
 def timer():
     counter, text = 0, '0'.rjust(3)
     pygame.time.set_timer(pygame.USEREVENT, 1000)
     font = pygame.font.SysFont('Consolas', 30)
     return counter, font
-
 
 def drawBoard(board, message, x):  # current board creation
 
@@ -397,6 +398,7 @@ def drawBoard(board, message, x):  # current board creation
     surfdisplay.blit(SURF_RESET, RECT_RESET)
     surfdisplay.blit(SURF_NEW, RECT_NEW)
     surfdisplay.blit(SURF_SOLVE, RECT_SOLVE)
+    surfdisplay.blit(SURF_BACK, RECT_BACK)
 
     if message:   # message on top left corner
         textSurf, textRect = makeText(message, MESSAGECOLOR, WHITE, ((WWIDTH / 3) - x), WHEIGHT / 6)
@@ -406,7 +408,6 @@ def drawBoard(board, message, x):  # current board creation
         for tiley in range(len(board[0])):
             if board[tilex][tiley]:
                 drawTile(tilex, tiley, board[tilex][tiley])
-
 
 def slideAnimation(board, direction, message, animationSpeed, x):  # tile sliding action
     # Note: This function does not check if the move is valid.
@@ -464,13 +465,11 @@ def slideAnimation(board, direction, message, animationSpeed, x):  # tile slidin
 
     CLOCK.tick(FPS)
 
-
 def updateMargins():
     global XMARGIN, YMARGIN
     # board margins
     XMARGIN = int((WWIDTH - (TSIZE * BWIDTH + (BWIDTH - 1))) / 2)
     YMARGIN = int((WHEIGHT - (TSIZE * BHEIGHT + (BHEIGHT - 1))) / 2)
-
 
 def generateNewPuzzle(numSlides):
     # making numSlides number of moves from solved config and animating
@@ -490,7 +489,6 @@ def generateNewPuzzle(numSlides):
         lastMove = move
 
     return (board, sequence)
-
 
 def resetAnimation(board, allMoves):
     # all moves reversed... can be used for solving
