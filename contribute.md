@@ -5,7 +5,7 @@ slide.py contains several user defined functions, elaborated in the comments bes
 
 ## PR Guidelines
 Make sure to follow these guidelines to create quality PRs for this repo
-  - Fork the repo and work on changes only on your fork of the repo
+  - Fork the repo and work on changes only on your fork of the repo.
   - Request to be assigned to an issue of your interest and do not submit PRs until assigned
   - Tag the issue number in your PRs in the description
   - Add screenshots and description of what you changed in the PR.
